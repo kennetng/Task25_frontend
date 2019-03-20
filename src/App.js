@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import LaunchSite from "./containers/Launch";
+import LaunchSite from "./components/LaunchSite";
 
 class App extends Component {
   render() {
