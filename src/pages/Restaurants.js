@@ -3,8 +3,6 @@ import "bootstrap/dist/css/bootstrap.css";
 import NavigationBar from "../components/navbar/NavbarPage";
 import RestaurantCard from "../components/restaurants/RestaurantCard";
 import ReviewCard from "../components/restaurants/ReviewCard";
-import dataFileRestaurant from "../dataRestaurant.json";
-import dataFileReview from "../dataReview.json";
 
 import axios from "axios";
 
