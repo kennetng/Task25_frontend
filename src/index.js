@@ -6,9 +6,7 @@ import Login from "./components/login/login";
 import * as serviceWorker from "./serviceWorker";
 import Cookies from "universal-cookie";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import LaunchSite from "./components/landingpage/LaunchSite";
 import Search from "./components/search/Search";
-//import LaunchSite from "./components/landingpage/LaunchSite";
 import RestaurantSite from "./pages/Restaurants";
 
 const cookies = new Cookies();
