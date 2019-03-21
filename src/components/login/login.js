@@ -10,16 +10,19 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: [],
-      store: []
+      user: [],
+      store: [],
+      login: "asda"
     };
   }
   componentDidMount() {
-    axios.get(PROXYURL + API).then(json => console.log(json));
+    axios.get(PROXYURL + API).then(json => this.setState({ store: json.data }));
   }
-
+  registerForm() {
+    console.log(this);
+    alert(this);
+  }
   render() {
-    const { hits } = this.state;
     return (
       <div>
         <NavBar />
@@ -107,7 +110,10 @@ class Login extends Component {
                               alignItems: "center"
                             }}
                           >
-                            <Button variant="dark" type="submit">
+                            <Button
+                              variant="dark"
+                              onClick={this.registerForm.bind(this)}
+                            >
                               Register
                             </Button>
                           </div>
