@@ -7,10 +7,10 @@ class NavBarPage extends React.Component {
   render() {
     return (
       <Navbar bg="primary" variant="dark" expand="lg">
-        <Navbar.Brand href="#home">KPS Restaurant Review</Navbar.Brand>
+        <Navbar.Brand href="#home">KPS</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
+          <Nav className="ml-auto">
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#restaurants">Restaurants</Nav.Link>
             <NavDropdown.Divider />
