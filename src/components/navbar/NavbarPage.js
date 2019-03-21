@@ -1,47 +1,28 @@
 import React from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
-import IconButton from "@material-ui/core/IconButton";
-import AccountCircle from "@material-ui/icons/AccountCircle";
+import { Route, NavLink, HashRouter, Router } from "react-router-dom";
+import Login from "../login/login";
 
 class NavBarPage extends React.Component {
   render() {
     return (
-      <Navbar bg="primary" variant="dark" expand="lg">
-        <Navbar.Brand href="#home">KPS</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ml-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#restaurants">Restaurants</Nav.Link>
-            <NavDropdown.Divider />
-            <Nav.Link href="#login">
-              <IconButton
-                aria-haspopup="true"
-                onClick={this.handleMenu}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
-            </Nav.Link>
-            {/*
-                                       
-                            aria-owns={open ? "menu-appbar" : undefined}
-                      }
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Home</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Login</NavDropdown.Item>
+      <HashRouter>
+        <Navbar bg="primary" variant="dark" expand="lg">
+          <Navbar.Brand href="/">KPS</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ml-auto">
+              <Nav.Link href="">Search</Nav.Link>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-          
-            */}
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+              <Nav.Link href="/" to="/login">
+                Login
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+        <Router />
+      </HashRouter>
     );
   }
 }
-
 export default NavBarPage;
