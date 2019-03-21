@@ -1,15 +1,25 @@
 import React, { Component } from "react";
 import NavBar from "../navbar/NavbarPage";
-import { Form, Button, Card, Tab, Tabs, Nav, Row, Col } from "react-bootstrap";
+import { Form, Button, Card, Tab, Nav, Row, Col } from "react-bootstrap";
+import axios from "axios";
+
+const API = "https://restaurant-review-react.herokuapp.com/user/list";
+const PROXYURL = "https://cors-anywhere.herokuapp.com/";
+
 class Login extends Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
     this.state = {
-      key: "home"
+      users: [],
+      store: []
     };
+  }
+  componentDidMount() {
+    axios.get(PROXYURL + API).then(json => console.log(json));
   }
 
   render() {
+    const { hits } = this.state;
     return (
       <div>
         <NavBar />
@@ -29,7 +39,7 @@ class Login extends Component {
                     <Nav.Link eventKey="first">Login</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link eventKey="second">Register</Nav.Link>
+                    <Nav.Link eventKey="second">SignUp</Nav.Link>
                   </Nav.Item>
                 </Nav>
               </Col>
@@ -39,14 +49,14 @@ class Login extends Component {
                     <Card bg="light" text="black" style={{ width: "18rem" }}>
                       <Card.Body>
                         <Form>
-                          <Form.Group controlId="formBasicEmail">
+                          <Form.Group controlId="formBasicUsernameLogin">
                             <Form.Label>Username</Form.Label>
                             <Form.Control
                               type="username"
                               placeholder="Username"
                             />
                           </Form.Group>
-                          <Form.Group controlId="formBasicPassword">
+                          <Form.Group controlId="formBasicPasswordLogin">
                             <Form.Label>Password</Form.Label>
                             <Form.Control
                               type="password"
@@ -72,21 +82,21 @@ class Login extends Component {
                     <Card bg="light" text="black" style={{ width: "18rem" }}>
                       <Card.Body>
                         <Form>
-                          <Form.Group controlId="formBasicEmail">
+                          <Form.Group controlId="formBasicUsernameRegister">
                             <Form.Label>Username</Form.Label>
                             <Form.Control
                               type="username"
                               placeholder="Username"
                             />
                           </Form.Group>
-                          <Form.Group controlId="formBasicPassword">
+                          <Form.Group controlId="formBasicPasswordRegister">
                             <Form.Label>Password</Form.Label>
                             <Form.Control
                               type="password"
                               placeholder="Password"
                             />
                           </Form.Group>
-                          <Form.Group controlId="formBasicEmail">
+                          <Form.Group controlId="formBasicEmailRegister">
                             <Form.Label>Email</Form.Label>
                             <Form.Control type="Email" placeholder="Email" />
                           </Form.Group>
