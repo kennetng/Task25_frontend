@@ -1,7 +1,5 @@
 import React from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Login from "../login/login";
 
 class NavBarPage extends React.Component {
   render() {
