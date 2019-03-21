@@ -5,7 +5,8 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import Cookies from "universal-cookie";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import LaunchSite from "./components/landingpage/LaunchSite";
+//import LaunchSite from "./components/landingpage/LaunchSite";
+import RestaurantSite from "./pages/Restaurants";
 
 const cookies = new Cookies();
 
@@ -15,7 +16,7 @@ console.log(cookies.get("User"));
 ReactDOM.render(
   <Router>
     <div>
-      <Route path="/restaurant" exact component={LaunchSite} />
+      <Route path="/restaurants" exact component={RestaurantSite} />
       <Route path="/" exact component={App} />
     </div>
   </Router>,
