@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import Login from "./components/login/login";
 import * as serviceWorker from "./serviceWorker";
 import Cookies from "universal-cookie";
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -20,6 +21,7 @@ ReactDOM.render(
     <div>
       <Route path="/restaurant" exact component={LaunchSite} />
       <Route path="/" exact component={App} />
+      <Route path="/login" exact component={Login} />
     </div>
   </Router>,
   document.getElementById("root")
