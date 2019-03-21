@@ -6,16 +6,27 @@ import ReviewCard from "../components/restaurants/ReviewCard";
 import dataFileRestaurant from "../dataRestaurant.json";
 import dataFileReview from "../dataReview.json";
 
+import axios from "axios";
+
+const API = "https://restaurant-review-react.herokuapp.com/restaurant/list";
+const PROXYURL = "https://cors-anywhere.herokuapp.com/";
+
 class Restaurants extends Component {
-  state = {
-    restaurants: dataFileRestaurant.restaurants,
-    reviews: dataFileReview.reviews
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      restaurants: []
+    };
+  }
+
+  componentDidMount() {
+    axios
+      .get(PROXYURL + API)
+      .then(json => this.setState({ restaurants: json.data }));
+  }
 
   render() {
     const title = "My's Restaurants!";
-    const restaurants = this.state.restaurants;
-    const reviews = this.state.reviews;
 
     return (
       <div>
@@ -24,8 +35,7 @@ class Restaurants extends Component {
         </div>
         <div>
           <h2>{title}</h2>
-          <RestaurantList restaurants={restaurants} />
-          <ReviewList reviews={reviews} />
+          <RestaurantList restaurants={this.state.restaurants} />
         </div>
       </div>
     );
