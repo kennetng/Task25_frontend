@@ -23,20 +23,6 @@ class NavBarPage extends React.Component {
                 <AccountCircle />
               </IconButton>
             </Nav.Link>
-            {/*
-                                       
-                            aria-owns={open ? "menu-appbar" : undefined}
-                      }
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Home</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Login</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-          
-            */}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
