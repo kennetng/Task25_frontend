@@ -8,9 +8,6 @@ class App extends Component {
     return (
       <div>
         <NavigationBar />
-        <div className="app container">
-          <LaunchSite />
-        </div>
       </div>
     );
   }

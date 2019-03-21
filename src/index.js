@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import Login from "./components/login/login";
 import * as serviceWorker from "./serviceWorker";
 import Cookies from "universal-cookie";
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -10,7 +11,10 @@ import RestaurantSite from "./pages/Restaurants";
 
 const cookies = new Cookies();
 
-cookies.set("User", "Username", { path: "/" });
+cookies.set("User", "Username", {
+  path: "/",
+  expires: new Date(Date.now() + 2592000)
+});
 console.log(cookies.get("User"));
 
 ReactDOM.render(
@@ -18,6 +22,7 @@ ReactDOM.render(
     <div>
       <Route path="/restaurants" exact component={RestaurantSite} />
       <Route path="/" exact component={App} />
+      <Route path="/login" exact component={Login} />
     </div>
   </Router>,
   document.getElementById("root")
