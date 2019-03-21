@@ -24,7 +24,7 @@
 
     {
       "id": 3,
-      "name": "Casa Mia",
+      "name": "Mirichi",
       "address": "Storgata 1, 2000 Lillestrøm",
       "description": "Serving italian food",
       "category": "Italian",
@@ -35,7 +35,7 @@
 
     {
       "id": 4,
-      "name": "Casa Mia",
+      "name": "Peppes pizza",
       "address": "Storgata 1, 2000 Lillestrøm",
       "description": "Serving italian food",
       "category": "Italian",
@@ -46,7 +46,7 @@
 
     {
       "id": 5,
-      "name": "Casa Mia",
+      "name": "Egon",
       "address": "Storgata 1, 2000 Lillestrøm",
       "description": "Serving italian food",
       "category": "Italian",
@@ -57,7 +57,7 @@
 
     {
       "id": 6,
-      "name": "Casa Mia",
+      "name": "Fridays",
       "address": "Storgata 1, 2000 Lillestrøm",
       "description": "Serving italian food",
       "category": "Italian",
