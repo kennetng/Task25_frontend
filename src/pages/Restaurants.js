@@ -22,8 +22,11 @@ class Restaurants extends Component {
         <div>
           <NavigationBar />
         </div>
-        <h2>{title}</h2>
-        <RestaurantList restaurants={restaurants} />
+        <div>
+          <h2>{title}</h2>
+          <RestaurantList restaurants={restaurants} />
+          <ReviewList reviews={reviews} />
+        </div>
       </div>
     );
   }
