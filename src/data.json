@@ -1,0 +1,69 @@
+{
+  "restaurants": [
+    {
+      "id": 1,
+      "name": "Casa Mia",
+      "address": "Storgata 1, 2000 Lillestrøm",
+      "description": "Serving italian food",
+      "category": "Italian",
+      "createdAt": "2019-03-20T11:10:39.231Z",
+      "updatedAt": "2019-03-20T11:10:39.231Z",
+      "userId": 1
+    },
+
+    {
+      "id": 2,
+      "name": "Mirabel",
+      "address": "Storgata 8B, 2000 Lillestrøm",
+      "description": "World wide countries food and drinks",
+      "category": "All",
+      "createdAt": "2019-03-20T11:10:39.231Z",
+      "updatedAt": "2019-03-20T11:10:39.231Z",
+      "userId": 1
+    },
+
+    {
+      "id": 3,
+      "name": "Casa Mia",
+      "address": "Storgata 1, 2000 Lillestrøm",
+      "description": "Serving italian food",
+      "category": "Italian",
+      "createdAt": "2019-03-20T11:10:39.231Z",
+      "updatedAt": "2019-03-20T11:10:39.231Z",
+      "userId": 1
+    },
+
+    {
+      "id": 4,
+      "name": "Casa Mia",
+      "address": "Storgata 1, 2000 Lillestrøm",
+      "description": "Serving italian food",
+      "category": "Italian",
+      "createdAt": "2019-03-20T11:10:39.231Z",
+      "updatedAt": "2019-03-20T11:10:39.231Z",
+      "userId": 1
+    },
+
+    {
+      "id": 5,
+      "name": "Casa Mia",
+      "address": "Storgata 1, 2000 Lillestrøm",
+      "description": "Serving italian food",
+      "category": "Italian",
+      "createdAt": "2019-03-20T11:10:39.231Z",
+      "updatedAt": "2019-03-20T11:10:39.231Z",
+      "userId": 1
+    },
+
+    {
+      "id": 6,
+      "name": "Casa Mia",
+      "address": "Storgata 1, 2000 Lillestrøm",
+      "description": "Serving italian food",
+      "category": "Italian",
+      "createdAt": "2019-03-20T11:10:39.231Z",
+      "updatedAt": "2019-03-20T11:10:39.231Z",
+      "userId": 1
+    }
+  ]
+}
