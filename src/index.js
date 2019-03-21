@@ -7,6 +7,7 @@ import * as serviceWorker from "./serviceWorker";
 import Cookies from "universal-cookie";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import LaunchSite from "./components/landingpage/LaunchSite";
+import Search from "./components/search/Search";
 
 const cookies = new Cookies();
 
@@ -22,6 +23,7 @@ ReactDOM.render(
       <Route path="/restaurant" exact component={LaunchSite} />
       <Route path="/" exact component={App} />
       <Route path="/login" exact component={Login} />
+      <Route path="/search" exact component={Search} />
     </div>
   </Router>,
   document.getElementById("root")
