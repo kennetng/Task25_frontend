@@ -10,7 +10,10 @@ import LaunchSite from "./components/landingpage/LaunchSite";
 
 const cookies = new Cookies();
 
-cookies.set("User", "Username", { path: "/" });
+cookies.set("User", "Username", {
+  path: "/",
+  expires: new Date(Date.now() + 2592000)
+});
 console.log(cookies.get("User"));
 
 ReactDOM.render(
