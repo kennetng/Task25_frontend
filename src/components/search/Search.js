@@ -7,13 +7,22 @@ class Search extends Component {
       <div>
         <NavBar />
         <div className="app container" />
-        <div class="md-form mt-0">
+        <div className="col-4" style={{ marginTop: 2 + "em" }}>
           <input
-            class="form-control"
+            className="form-control"
             type="text"
-            placeholder="Search"
+            placeholder="What would you like to search for?"
             aria-label="Search"
           />
+          <div className="text-center" style={{ marginTop: 0.2 + "em" }}>
+            <button
+              type="button"
+              className="btn btn-dark center-block"
+              style={{ marginTop: 0.2 + "em" }}
+            >
+              Search
+            </button>
+          </div>
         </div>
       </div>
     );
