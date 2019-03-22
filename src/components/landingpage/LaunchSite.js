@@ -3,7 +3,7 @@ import "./LaunchSite.css";
 import NavbarPage from "../navbar/NavbarPage";
 import axios from "axios";
 import ReviewCard from "../restaurants/ReviewCard";
-import RestaurantCard from "../restaurants/ReviewCard";
+import RestaurantCard from "../restaurants/RestaurantCard";
 
 const PROXYURL = "https://cors-anywhere.herokuapp.com/";
 const API1 = "https://restaurant-review-react.herokuapp.com/review/list";
@@ -37,16 +37,44 @@ class LaunchSite extends React.Component {
           <NavbarPage />
         </div>
         <div className="row-6">
-          <h2>{title1}</h2>
-          <ReviewList reviews={this.state.reviews} />
-        </div>
-        <div className="row-6">
           <h2>{title2}</h2>
-          <RestaurantList restaurants={this.state.restaurants} />
+          <RestaurantList
+            restaurants={this.state.restaurants}
+            reviews={this.state.reviews}
+          />
+        </div>
+
+        <div className="card-body">
+          <h2>{title1}</h2>
+          <div>
+            <ReviewList reviews={this.state.reviews} />
+          </div>
         </div>
       </div>
     );
   }
+}
+
+function RestaurantList(props) {
+  const restaurants = props.restaurants;
+  const listRestaurants = restaurants.map(res => (
+    <div className="col-xs-12 col-sm-6 col-md-4">
+      <div className="card text-white bg-info mb-3">
+        <div className="card-header">
+          <RestaurantCard
+            key={res.id}
+            id={res.id}
+            name={res.name}
+            address={res.address}
+            description={res.description}
+            category={res.category}
+            reviews={props.reviews}
+          />
+        </div>
+      </div>
+    </div>
+  ));
+  return <div className="row">{listRestaurants}</div>;
 }
 
 function ReviewList(props) {
@@ -54,21 +82,11 @@ function ReviewList(props) {
   const listReviews = reviews.map(res => (
     <ReviewCard key={res.id} rating={res.rating} review={res.review} />
   ));
-  return <div className="row">{listReviews}</div>;
-}
-
-function RestaurantList(props) {
-  const restaurants = props.restaurants;
-  const listRestaurants = restaurants.map(res => (
-    <RestaurantCard
-      key={res.id}
-      name={res.name}
-      address={res.address}
-      description={res.description}
-      category={res.category}
-    />
-  ));
-  return <div className="row">{listRestaurants}</div>;
+  return (
+    <div className="row">
+      <ul>{listReviews}</ul>
+    </div>
+  );
 }
 
 export default LaunchSite;
