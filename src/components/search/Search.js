@@ -29,11 +29,7 @@ class Search extends Component {
   }
   handleOnClick(event) {
     axios
-      .get(
-        PROXYURL +
-          API +
-          (this.state.target + "/" + this.state.search).toLowerCase()
-      )
+      .get(PROXYURL + API + this.state.target + "/" + this.state.search)
       .then(res => {
         console.log(res);
         console.log(res.data);
