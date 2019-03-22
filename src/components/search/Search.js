@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NavBar from "../navbar/NavbarPage";
+import RestaurantCard from "../restaurants/RestaurantCard";
 import {
   Form,
   Button,
@@ -18,7 +19,17 @@ class Search extends Component {
     super(props);
     this.state = {
       search: "",
-      target: "Name"
+      target: "Name",
+      restaurants: [
+        {
+          key: "",
+          id: "",
+          name: "none",
+          address: "",
+          description: "",
+          category: ""
+        }
+      ]
     };
   }
   handleKeyPress(event) {
@@ -31,12 +42,12 @@ class Search extends Component {
     axios
       .get(PROXYURL + API + this.state.target + "/" + this.state.search)
       .then(res => {
-        console.log(res);
-        console.log(res.data);
+        this.setState({ restaurants: res.data });
       })
       .catch(error => {
         console.log(error.response);
       });
+    RestaurantList(this.state);
     this.setState({ search: "" });
   }
   handleChange(event) {
@@ -89,8 +100,29 @@ class Search extends Component {
             </Button>
           </Form>
         </div>
+        <div className="app container">
+          <RestaurantList restaurants={this.state.restaurants} />
+        </div>
       </div>
     );
+  }
+}
+function RestaurantList(props) {
+  const restaurants = props.restaurants;
+  if (restaurants[0].name != "none") {
+    const listRestaurants = restaurants.map(res => (
+      <RestaurantCard
+        key={res.id}
+        id={res.id}
+        name={res.name}
+        address={res.address}
+        description={res.description}
+        category={res.category}
+      />
+    ));
+    return <div className="row">{listRestaurants}</div>;
+  } else {
+    return <div className="row" />;
   }
 }
 
