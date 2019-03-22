@@ -12,6 +12,7 @@ import Cookies from "universal-cookie";
 import DashboardUpdateUser from "./components/dashboard/DashboardUpdateUser";
 import DashboardAddReview from "./components/dashboard/DashboardAddReview";
 import DashboardListReviews from "./components/dashboard/DashboardListReviews";
+import DashboardAddRestaurant from "./components/dashboard/DashboardAddRestaurant";
 
 const cookies = new Cookies();
 
@@ -34,6 +35,11 @@ ReactDOM.render(
         path="/dashboardlistreview"
         exact
         component={DashboardListReviews}
+      />
+      <Route
+        path="/dashboardaddrestaurant"
+        exact
+        component={DashboardAddRestaurant}
       />
     </div>
   </Router>,
