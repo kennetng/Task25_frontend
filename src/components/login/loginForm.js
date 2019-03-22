@@ -18,10 +18,9 @@ class LoginForm extends Component {
     };
   }
 
-  componentDidMount() {
-    axios.get(PROXYURL + API).then(json => this.setState({ store: json.data }));
-  }
+  componentDidMount() {}
   handleRegisterForm(event) {
+    axios.get(PROXYURL + API).then(json => this.setState({ store: json.data }));
     console.log(event.target);
   }
 
@@ -46,6 +45,7 @@ class LoginForm extends Component {
       <Card bg="light" text="black" style={{ width: "18rem" }}>
         <Card.Body>
           <Form>
+
             <Button
               variant="dark"
               type="button"
@@ -54,6 +54,9 @@ class LoginForm extends Component {
               Cookies
             </Button>
             <Form.Group controlId="formBasicUsernameRegister">
+
+            <Form.Group controlId="formBasicUsernameLogin">
+
               <Form.Label>Username</Form.Label>
               <Form.Control
                 type="username"
@@ -62,7 +65,7 @@ class LoginForm extends Component {
                 onChange={this.handleChangeUsername.bind(this)}
               />
             </Form.Group>
-            <Form.Group controlId="formBasicPasswordRegister">
+            <Form.Group controlId="formBasicPasswordLogin">
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
