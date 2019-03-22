@@ -1,52 +1,42 @@
-import React, { Component } from "react";
-import {
-  Form,
-  Button,
-  Card,
-  Dropdown,
-  InputGroup,
-  DropdownButton
-} from "react-bootstrap";
+import React from "react";
+import { Form, Button, Card } from "react-bootstrap";
+import NavbarPage from "../navbar/NavbarPage";
 import axios from "axios";
-import Cookies from "universal-cookie";
 
-const cookies = new Cookies();
-
-const API = "https://restaurant-review-react.herokuapp.com/user/create";
 const PROXYURL = "https://cors-anywhere.herokuapp.com/";
+const API = "https://restaurant-review-react.herokuapp.com/user/update";
 
-class RegisterForm extends Component {
+class DashboardUpdateUser extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      user_id: "",
       username: "",
       password: "",
-      email: "",
-      role: "",
-      target: "Add Role"
+      email: ""
     };
   }
 
-  handleRegisterForm(event) {
+  handleUpdateForm(event) {
     event.preventDefault();
 
     axios
       .post(PROXYURL + API, {
+        user_id: this.state.user_id,
         username: this.state.username,
         password: this.state.password,
         email: this.state.email,
-        role: this.state.role
+        role: 1
       })
       .then(res => {
         console.log(res);
         console.log(res.data);
       });
     this.setState({
+      user_id: "",
       username: "",
       password: "",
-      email: "",
-      role: "",
-      target: "Add Role"
+      email: ""
     });
   }
 
@@ -62,28 +52,32 @@ class RegisterForm extends Component {
   handleChangeEmail(event) {
     this.setState({ email: event.target.value });
   }
-  handleTargetSearch(event) {
-    if (event.target.text === "Reviewer") {
-      this.setState(() => ({ role: 1 }));
-    } else {
-      this.setState(() => ({ role: 2 }));
-    }
-    this.setState({ target: event.target.text });
+  setUserId(event) {
+    this.setState({ user_id: event.target.value });
   }
 
-  setCookie(event) {
-    cookies.set("User", this.state.username, {
-      path: "/",
-      expires: new Date(Date.now() + 2592000)
-    });
-    console.log(cookies.get("User"));
+  componentDidMount() {
+    axios.get(PROXYURL + API).then(json => this.setState({ store: json.data }));
   }
 
   render() {
+    const title1 = "Update User Information";
+
     return (
       <Card bg="light" text="black" style={{ width: "18rem" }}>
         <Card.Body>
-          <Form onSubmit={this.handleRegisterForm.bind(this)}>
+          <h3 className="text-center">{title1}</h3>
+          <br />
+          <Form onSubmit={this.handleUpdateForm.bind(this)}>
+            <Form.Group controlId="formBasicUserIDRegister">
+              <Form.Label>Where User ID is:</Form.Label>
+              <Form.Control
+                type="username"
+                placeholder="Username"
+                value={this.state.user_id}
+                onChange={this.setUserId.bind(this)}
+              />
+            </Form.Group>
             <Form.Group controlId="formBasicUsernameRegister">
               <Form.Label>Username</Form.Label>
               <Form.Control
@@ -111,24 +105,6 @@ class RegisterForm extends Component {
                 onChange={this.handleChangeEmail.bind(this)}
               />
             </Form.Group>
-            <Form.Group controlId="formBasicEmailRegister">
-              <Form.Label>Role</Form.Label>
-
-              <DropdownButton
-                as={InputGroup.Append}
-                variant="primary"
-                title={this.state.target}
-                id="input-group-dropdown-2"
-              >
-                <Dropdown.Item onClick={this.handleTargetSearch.bind(this)}>
-                  Reviewer
-                </Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item onClick={this.handleTargetSearch.bind(this)}>
-                  Owner
-                </Dropdown.Item>
-              </DropdownButton>
-            </Form.Group>
             <div
               style={{
                 display: "flex",
@@ -137,7 +113,7 @@ class RegisterForm extends Component {
               }}
             >
               <Button variant="dark" type="Submit">
-                Register
+                Update
               </Button>
             </div>
           </Form>
@@ -147,4 +123,4 @@ class RegisterForm extends Component {
   }
 }
 
-export default RegisterForm;
+export default DashboardUpdateUser;
