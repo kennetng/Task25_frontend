@@ -7,12 +7,12 @@ import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Search from "./components/search/Search";
 import RestaurantSite from "./pages/Restaurants";
-import Dashboard from "./components/dashboard/DashboardUpdateUser";
 import Cookies from "universal-cookie";
 import DashboardUpdateUser from "./components/dashboard/DashboardUpdateUser";
 import DashboardAddReview from "./components/dashboard/DashboardAddReview";
 import DashboardListReviews from "./components/dashboard/DashboardListReviews";
 import DashboardAddRestaurant from "./components/dashboard/DashboardAddRestaurant";
+import DashboardListRestaurants from "./components/dashboard/DashboardListRestaurants";
 
 const cookies = new Cookies();
 
@@ -32,7 +32,7 @@ ReactDOM.render(
       <Route path="/dashboard" exact component={DashboardUpdateUser} />
       <Route path="/dashboardaddreview" exact component={DashboardAddReview} />
       <Route
-        path="/dashboardlistreview"
+        path="/dashboardlistreviews"
         exact
         component={DashboardListReviews}
       />
@@ -40,6 +40,11 @@ ReactDOM.render(
         path="/dashboardaddrestaurant"
         exact
         component={DashboardAddRestaurant}
+      />
+      <Route
+        path="/dashboardlistrestaurants"
+        exact
+        component={DashboardListRestaurants}
       />
     </div>
   </Router>,
