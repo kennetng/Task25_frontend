@@ -61,11 +61,6 @@ function RestaurantList(props) {
     <div className="col-xs-12 col-sm-6 col-md-4">
       <div className="card text-white bg-info mb-3">
         <div className="card-header">
-          <div>
-            <button type="button" class="btn btn-outline-dark btn-lg btn-block">
-              Edit
-            </button>
-          </div>
           <RestaurantCard
             key={res.id}
             id={res.id}
