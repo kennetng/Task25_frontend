@@ -7,12 +7,7 @@ import { Tab, Nav, Row, Col } from "react-bootstrap";
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      registerUsername: "",
-      registerPassword: "",
-      registerEmail: "",
-      role: 1
-    };
+    this.state = {};
   }
   render() {
     return (
