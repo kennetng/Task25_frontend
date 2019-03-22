@@ -14,9 +14,6 @@ import DashboardListReviews from "./components/dashboard/DashboardListReviews";
 import DashboardAddRestaurant from "./components/dashboard/DashboardAddRestaurant";
 import DashboardListRestaurants from "./components/dashboard/DashboardListRestaurants";
 
-let cookie = Cookies.get("User");
-console.log(cookie);
-
 ReactDOM.render(
   <Router>
     <div>
