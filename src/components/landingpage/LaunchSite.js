@@ -58,15 +58,26 @@ class LaunchSite extends React.Component {
 function RestaurantList(props) {
   const restaurants = props.restaurants;
   const listRestaurants = restaurants.map(res => (
-    <RestaurantCard
-      key={res.id}
-      id={res.id}
-      name={res.name}
-      address={res.address}
-      description={res.description}
-      category={res.category}
-      reviews={props.reviews}
-    />
+    <div className="col-xs-12 col-sm-6 col-md-4">
+      <div className="card text-white bg-info mb-3">
+        <div className="card-header">
+          <div>
+            <button type="button" class="btn btn-outline-dark btn-lg btn-block">
+              Edit
+            </button>
+          </div>
+          <RestaurantCard
+            key={res.id}
+            id={res.id}
+            name={res.name}
+            address={res.address}
+            description={res.description}
+            category={res.category}
+            reviews={props.reviews}
+          />
+        </div>
+      </div>
+    </div>
   ));
   return <div className="row">{listRestaurants}</div>;
 }

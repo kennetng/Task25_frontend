@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "bootstrap/dist/css/bootstrap.css";
 import NavigationBar from "../components/navbar/NavbarPage";
 import RestaurantCard from "../components/restaurants/RestaurantCard";
 import ReviewCard from "../components/restaurants/ReviewCard";
@@ -53,29 +52,28 @@ class Restaurants extends Component {
 function RestaurantList(props) {
   const restaurants = props.restaurants;
   const listRestaurants = restaurants.map(res => (
-    <RestaurantCard
-      key={res.id}
-      id={res.id}
-      name={res.name}
-      address={res.address}
-      description={res.description}
-      category={res.category}
-      reviews={props.reviews}
-    />
+    <div className="col-xs-12 col-sm-6 col-md-4">
+      <div className="card text-white bg-info mb-3">
+        <div className="card-header">
+          <div>
+            <button type="button" class="btn btn-outline-dark btn-lg btn-block">
+              Edit
+            </button>
+          </div>
+          <RestaurantCard
+            key={res.id}
+            id={res.id}
+            name={res.name}
+            address={res.address}
+            description={res.description}
+            category={res.category}
+            reviews={props.reviews}
+          />
+        </div>
+      </div>
+    </div>
   ));
   return <div className="row">{listRestaurants}</div>;
-}
-
-function ReviewList(props) {
-  const reviews = props.reviews;
-  const listReviews = reviews.map(res => (
-    <ReviewCard key={res.id} rating={res.rating} review={res.review} />
-  ));
-  return (
-    <div className="row">
-      <ul>{listReviews}</ul>
-    </div>
-  );
 }
 
 export default Restaurants;
