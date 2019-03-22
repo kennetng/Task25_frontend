@@ -6,23 +6,23 @@ import ReviewCard from "../restaurants/ReviewCard";
 const PROXYURL = "https://cors-anywhere.herokuapp.com/";
 const API = "https://restaurant-review-react.herokuapp.com/review/user/";
 
-class DashboardListReviews extends React.Component {
+class DashboardListRecentReviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user_id: 1,
+      restaurant_id: 1,
       reviews: []
     };
   }
 
   componentDidMount() {
     axios
-      .get(PROXYURL + API + this.state.user_id)
+      .get(PROXYURL + API + this.state.restaurant_id)
       .then(json => this.setState({ reviews: json.data }));
   }
 
   render() {
-    const title1 = "Your reviews:";
+    const title1 = "Your recent reviews:";
 
     return (
       <div>
@@ -43,4 +43,4 @@ function ReviewList(props) {
   return <div className="row">{listReviews}</div>;
 }
 
-export default DashboardListReviews;
+export default DashboardListRecentReviews;
