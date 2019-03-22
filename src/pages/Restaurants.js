@@ -6,21 +6,28 @@ import ReviewCard from "../components/restaurants/ReviewCard";
 
 import axios from "axios";
 
-const API = "https://restaurant-review-react.herokuapp.com/restaurant/list";
+const APIrestaurant =
+  "https://restaurant-review-react.herokuapp.com/restaurant/list";
+const APIreviews = "https://restaurant-review-react.herokuapp.com/review/list";
 const PROXYURL = "https://cors-anywhere.herokuapp.com/";
 
 class Restaurants extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      restaurants: []
+      restaurants: [],
+      reviews: []
     };
   }
 
   componentDidMount() {
     axios
-      .get(PROXYURL + API)
+      .get(PROXYURL + APIrestaurant)
       .then(json => this.setState({ restaurants: json.data }));
+
+    axios
+      .get(PROXYURL + APIreviews)
+      .then(json => this.setState({ reviews: json.data }));
   }
 
   render() {
@@ -33,7 +40,10 @@ class Restaurants extends Component {
         </div>
         <div>
           <h2>{title}</h2>
-          <RestaurantList restaurants={this.state.restaurants} />
+          <RestaurantList
+            restaurants={this.state.restaurants}
+            reviews={this.state.reviews}
+          />
         </div>
       </div>
     );
@@ -50,6 +60,7 @@ function RestaurantList(props) {
       address={res.address}
       description={res.description}
       category={res.category}
+      reviews={props.reviews}
     />
   ));
   return <div className="row">{listRestaurants}</div>;
@@ -58,9 +69,13 @@ function RestaurantList(props) {
 function ReviewList(props) {
   const reviews = props.reviews;
   const listReviews = reviews.map(res => (
-    <ReviewCard rating={res.rating} review={res.review} />
+    <ReviewCard key={res.id} rating={res.rating} review={res.review} />
   ));
-  return <div className="row">{listReviews}</div>;
+  return (
+    <div className="row">
+      <ul>{listReviews}</ul>
+    </div>
+  );
 }
 
 export default Restaurants;

@@ -1,6 +1,23 @@
 import React from "react";
 
+import ReviewCard from "./ReviewCard";
+import "./style.css";
+
 const RestaurantCard = props => {
+  const reviewsFilter = props.reviews.filter(
+    review => review.restaurantId === props.id
+  );
+
+  const reviews = reviewsFilter.map(review => {
+    return (
+      <ReviewCard
+        key={review.id}
+        rating={review.rating}
+        review={review.review}
+      />
+    );
+  });
+
   return (
     <div className="col-xs-12 col-sm-6 col-md-4">
       <div className="card text-white bg-info mb-3">
@@ -35,6 +52,7 @@ const RestaurantCard = props => {
           </div>
           <div>
             <h4>Reviews</h4>
+            <div className="scroll">{reviews}</div>
           </div>
         </div>
       </div>

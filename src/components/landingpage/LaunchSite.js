@@ -3,7 +3,7 @@ import "./LaunchSite.css";
 import NavbarPage from "../navbar/NavbarPage";
 import axios from "axios";
 import ReviewCard from "../restaurants/ReviewCard";
-import RestaurantCard from "../restaurants/ReviewCard";
+import RestaurantCard from "../restaurants/RestaurantCard";
 
 const PROXYURL = "https://cors-anywhere.herokuapp.com/";
 const API1 = "https://restaurant-review-react.herokuapp.com/review/list";
@@ -37,24 +37,22 @@ class LaunchSite extends React.Component {
           <NavbarPage />
         </div>
         <div className="row-6">
-          <h2>{title1}</h2>
-          <ReviewList reviews={this.state.reviews} />
-        </div>
-        <div className="row-6">
           <h2>{title2}</h2>
-          <RestaurantList restaurants={this.state.restaurants} />
+          <RestaurantList
+            restaurants={this.state.restaurants}
+            reviews={this.state.reviews}
+          />
+        </div>
+
+        <div className="card-body">
+          <h2>{title1}</h2>
+          <div>
+            <ReviewList reviews={this.state.reviews} />
+          </div>
         </div>
       </div>
     );
   }
-}
-
-function ReviewList(props) {
-  const reviews = props.reviews;
-  const listReviews = reviews.map(res => (
-    <ReviewCard key={res.id} rating={res.rating} review={res.review} />
-  ));
-  return <div className="row">{listReviews}</div>;
 }
 
 function RestaurantList(props) {
@@ -62,13 +60,27 @@ function RestaurantList(props) {
   const listRestaurants = restaurants.map(res => (
     <RestaurantCard
       key={res.id}
+      id={res.id}
       name={res.name}
       address={res.address}
       description={res.description}
       category={res.category}
+      reviews={props.reviews}
     />
   ));
   return <div className="row">{listRestaurants}</div>;
+}
+
+function ReviewList(props) {
+  const reviews = props.reviews;
+  const listReviews = reviews.map(res => (
+    <ReviewCard key={res.id} rating={res.rating} review={res.review} />
+  ));
+  return (
+    <div className="row">
+      <ul>{listReviews}</ul>
+    </div>
+  );
 }
 
 export default LaunchSite;
