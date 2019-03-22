@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Form, Button, Card } from "react-bootstrap";
 import axios from "axios";
+import Cookies from "universal-cookie";
+
+const cookies = new Cookies();
 
 const API = "https://restaurant-review-react.herokuapp.com/user/list";
 const PROXYURL = "https://cors-anywhere.herokuapp.com/";
@@ -28,12 +31,32 @@ class LoginForm extends Component {
   handleChangePassword(event) {
     this.setState({ password: event.target.value });
   }
+
+  setCookie(event) {
+    cookies.set("User", this.state.username, {
+      path: "/",
+      expires: new Date(Date.now() + 2592000)
+    });
+    console.log(cookies.get("User"));
+  }
+
   render() {
     return (
       <Card bg="light" text="black" style={{ width: "18rem" }}>
         <Card.Body>
           <Form>
+
+            <Button
+              variant="dark"
+              type="button"
+              onClick={this.setCookie.bind(this)}
+            >
+              Cookies
+            </Button>
+            <Form.Group controlId="formBasicUsernameRegister">
+
             <Form.Group controlId="formBasicUsernameLogin">
+
               <Form.Label>Username</Form.Label>
               <Form.Control
                 type="username"
