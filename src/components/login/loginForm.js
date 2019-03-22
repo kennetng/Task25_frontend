@@ -45,14 +45,6 @@ class LoginForm extends Component {
       <Card bg="light" text="black" style={{ width: "18rem" }}>
         <Card.Body>
           <Form>
-            <Button
-              variant="dark"
-              type="button"
-              onClick={this.setCookie.bind(this)}
-            >
-              Cookies
-            </Button>
-
             <Form.Group controlId="formBasicUsernameLogin">
               <Form.Label>Username</Form.Label>
               <Form.Control
