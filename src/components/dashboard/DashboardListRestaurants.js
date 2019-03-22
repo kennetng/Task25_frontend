@@ -1,5 +1,4 @@
 import React from "react";
-import NavbarPage from "../navbar/NavbarPage";
 import axios from "axios";
 import RestaurantCard from "../restaurants/RestaurantCard";
 

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import NavigationBar from "../components/navbar/NavbarPage";
 import RestaurantCard from "../components/restaurants/RestaurantCard";
-import ReviewCard from "../components/restaurants/ReviewCard";
 
 import axios from "axios";
 

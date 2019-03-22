@@ -1,6 +1,5 @@
 import React from "react";
 import { Form, Button, Card } from "react-bootstrap";
-import NavbarPage from "../navbar/NavbarPage";
 import axios from "axios";
 
 const PROXYURL = "https://cors-anywhere.herokuapp.com/";
