@@ -4,9 +4,9 @@ import NavbarPage from "../navbar/NavbarPage";
 import axios from "axios";
 
 const PROXYURL = "https://cors-anywhere.herokuapp.com/";
-const API1 = "https://restaurant-review-react.herokuapp.com/user/update";
+const API = "https://restaurant-review-react.herokuapp.com/user/update";
 
-class Dashboard extends React.Component {
+class DashboardUpdateUser extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,7 +21,7 @@ class Dashboard extends React.Component {
     event.preventDefault();
 
     axios
-      .post(PROXYURL + API1, {
+      .post(PROXYURL + API, {
         user_id: this.state.user_id,
         username: this.state.username,
         password: this.state.password,
@@ -57,9 +57,7 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount() {
-    axios
-      .get(PROXYURL + API1)
-      .then(json => this.setState({ store: json.data }));
+    axios.get(PROXYURL + API).then(json => this.setState({ store: json.data }));
   }
 
   render() {
@@ -125,4 +123,4 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard;
+export default DashboardUpdateUser;
