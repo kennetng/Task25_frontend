@@ -109,7 +109,7 @@ class Search extends Component {
 }
 function RestaurantList(props) {
   const restaurants = props.restaurants;
-  if (restaurants[0].name != "none") {
+  if (restaurants[0].name !== "none") {
     const listRestaurants = restaurants.map(res => (
       <RestaurantCard
         key={res.id}
