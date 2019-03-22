@@ -7,12 +7,7 @@ import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Search from "./components/search/Search";
 import RestaurantSite from "./pages/Restaurants";
-import Cookies from "universal-cookie";
-import DashboardUpdateUser from "./components/dashboard/DashboardUpdateUser";
-import DashboardAddReview from "./components/dashboard/DashboardAddReview";
-import DashboardListReviews from "./components/dashboard/DashboardListReviews";
-import DashboardAddRestaurant from "./components/dashboard/DashboardAddRestaurant";
-import DashboardListRestaurants from "./components/dashboard/DashboardListRestaurants";
+import Dashboard from "./components/dashboard/Dashboard";
 
 ReactDOM.render(
   <Router>
@@ -21,23 +16,7 @@ ReactDOM.render(
       <Route path="/" exact component={App} />
       <Route path="/login" exact component={Login} />
       <Route path="/search" exact component={Search} />
-      <Route path="/dashboard" exact component={DashboardUpdateUser} />
-      <Route path="/dashboardaddreview" exact component={DashboardAddReview} />
-      <Route
-        path="/dashboardlistreviews"
-        exact
-        component={DashboardListReviews}
-      />
-      <Route
-        path="/dashboardaddrestaurant"
-        exact
-        component={DashboardAddRestaurant}
-      />
-      <Route
-        path="/dashboardlistrestaurants"
-        exact
-        component={DashboardListRestaurants}
-      />
+      <Route path="/dashboard" exact component={Dashboard} />
     </div>
   </Router>,
   document.getElementById("root")
