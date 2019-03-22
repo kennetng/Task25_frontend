@@ -1,29 +1,28 @@
-import React, { Component } from "react";
+import React from "react";
 import { Form, Button, Card } from "react-bootstrap";
+import NavbarPage from "../navbar/NavbarPage";
 import axios from "axios";
-import Cookies from "universal-cookie";
 
-const cookies = new Cookies();
-
-const API = "https://restaurant-review-react.herokuapp.com/user/create";
 const PROXYURL = "https://cors-anywhere.herokuapp.com/";
+const API1 = "https://restaurant-review-react.herokuapp.com/user/update";
 
-class RegisterForm extends Component {
+class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      user_id: "",
       username: "",
       password: "",
-      email: "",
-      role: 1
+      email: ""
     };
   }
 
-  handleRegisterForm(event) {
+  handleUpdateForm(event) {
     event.preventDefault();
 
     axios
-      .post(PROXYURL + API, {
+      .post(PROXYURL + API1, {
+        user_id: this.state.user_id,
         username: this.state.username,
         password: this.state.password,
         email: this.state.email,
@@ -34,6 +33,7 @@ class RegisterForm extends Component {
         console.log(res.data);
       });
     this.setState({
+      user_id: "",
       username: "",
       password: "",
       email: ""
@@ -52,20 +52,34 @@ class RegisterForm extends Component {
   handleChangeEmail(event) {
     this.setState({ email: event.target.value });
   }
+  setUserId(event) {
+    this.setState({ user_id: event.target.value });
+  }
 
-  setCookie(event) {
-    cookies.set("User", this.state.username, {
-      path: "/",
-      expires: new Date(Date.now() + 2592000)
-    });
-    console.log(cookies.get("User"));
+  componentDidMount() {
+    axios
+      .get(PROXYURL + API1)
+      .then(json => this.setState({ store: json.data }));
   }
 
   render() {
+    const title1 = "Update User Information";
+
     return (
       <Card bg="light" text="black" style={{ width: "18rem" }}>
         <Card.Body>
-          <Form onSubmit={this.handleRegisterForm.bind(this)}>
+          <h3 className="text-center">{title1}</h3>
+          <br />
+          <Form onSubmit={this.handleUpdateForm.bind(this)}>
+            <Form.Group controlId="formBasicUserIDRegister">
+              <Form.Label>Where User ID is:</Form.Label>
+              <Form.Control
+                type="username"
+                placeholder="Username"
+                value={this.state.user_id}
+                onChange={this.setUserId.bind(this)}
+              />
+            </Form.Group>
             <Form.Group controlId="formBasicUsernameRegister">
               <Form.Label>Username</Form.Label>
               <Form.Control
@@ -101,7 +115,7 @@ class RegisterForm extends Component {
               }}
             >
               <Button variant="dark" type="Submit">
-                Register
+                Update
               </Button>
             </div>
           </Form>
@@ -111,4 +125,4 @@ class RegisterForm extends Component {
   }
 }
 
-export default RegisterForm;
+export default Dashboard;
