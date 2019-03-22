@@ -12,6 +12,7 @@ import {
 import axios from "axios";
 
 const API = "https://restaurant-review-react.herokuapp.com/restaurant/";
+const APIreviews = "https://restaurant-review-react.herokuapp.com/review/list";
 const PROXYURL = "https://cors-anywhere.herokuapp.com/";
 
 class Search extends Component {
@@ -20,16 +21,8 @@ class Search extends Component {
     this.state = {
       search: "",
       target: "Name",
-      restaurants: [
-        {
-          key: "",
-          id: "",
-          name: "none",
-          address: "",
-          description: "",
-          category: ""
-        }
-      ]
+      restaurants: [],
+      reviews: []
     };
   }
   handleKeyPress(event) {
@@ -47,6 +40,10 @@ class Search extends Component {
       .catch(error => {
         console.log(error.response);
       });
+    axios
+      .get(PROXYURL + APIreviews)
+      .then(json => this.setState({ reviews: json.data }));
+
     RestaurantList(this.state);
     this.setState({ search: "" });
   }
@@ -100,8 +97,11 @@ class Search extends Component {
             </Button>
           </Form>
         </div>
-        <div className="app container">
-          <RestaurantList restaurants={this.state.restaurants} />
+        <div>
+          <RestaurantList
+            restaurants={this.state.restaurants}
+            reviews={this.state.reviews}
+          />
         </div>
       </div>
     );
@@ -109,16 +109,32 @@ class Search extends Component {
 }
 function RestaurantList(props) {
   const restaurants = props.restaurants;
-  if (restaurants[0].name != "none") {
+  console.log(restaurants);
+  if (restaurants.length !== 0) {
     const listRestaurants = restaurants.map(res => (
-      <RestaurantCard
-        key={res.id}
-        id={res.id}
-        name={res.name}
-        address={res.address}
-        description={res.description}
-        category={res.category}
-      />
+      <div className="col-xs-12 col-sm-6 col-md-4">
+        <div className="card text-white bg-info mb-3">
+          <div className="card-header">
+            <div>
+              <button
+                type="button"
+                class="btn btn-outline-dark btn-lg btn-block"
+              >
+                Edit
+              </button>
+            </div>
+            <RestaurantCard
+              key={res.id}
+              id={res.id}
+              name={res.name}
+              address={res.address}
+              description={res.description}
+              category={res.category}
+              reviews={props.reviews}
+            />
+          </div>
+        </div>
+      </div>
     ));
     return <div className="row">{listRestaurants}</div>;
   } else {

@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { Form, Button, Card } from "react-bootstrap";
+import {
+  Form,
+  Button,
+  Card,
+  Dropdown,
+  InputGroup,
+  DropdownButton
+} from "react-bootstrap";
 import axios from "axios";
 import Cookies from "universal-cookie";
 
@@ -15,7 +22,8 @@ class RegisterForm extends Component {
       username: "",
       password: "",
       email: "",
-      role: 1
+      role: "",
+      target: "Add Role"
     };
   }
 
@@ -27,7 +35,7 @@ class RegisterForm extends Component {
         username: this.state.username,
         password: this.state.password,
         email: this.state.email,
-        role: 1
+        role: this.state.role
       })
       .then(res => {
         console.log(res);
@@ -36,7 +44,9 @@ class RegisterForm extends Component {
     this.setState({
       username: "",
       password: "",
-      email: ""
+      email: "",
+      role: "",
+      target: "Add Role"
     });
   }
 
@@ -51,6 +61,14 @@ class RegisterForm extends Component {
   }
   handleChangeEmail(event) {
     this.setState({ email: event.target.value });
+  }
+  handleTargetSearch(event) {
+    if (event.target.text === "Reviewer") {
+      this.setState(() => ({ role: 1 }));
+    } else {
+      this.setState(() => ({ role: 2 }));
+    }
+    this.setState({ target: event.target.text });
   }
 
   setCookie(event) {
@@ -92,6 +110,24 @@ class RegisterForm extends Component {
                 value={this.state.email}
                 onChange={this.handleChangeEmail.bind(this)}
               />
+            </Form.Group>
+            <Form.Group controlId="formBasicEmailRegister">
+              <Form.Label>Role</Form.Label>
+
+              <DropdownButton
+                as={InputGroup.Append}
+                variant="primary"
+                title={this.state.target}
+                id="input-group-dropdown-2"
+              >
+                <Dropdown.Item onClick={this.handleTargetSearch.bind(this)}>
+                  Reviewer
+                </Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item onClick={this.handleTargetSearch.bind(this)}>
+                  Owner
+                </Dropdown.Item>
+              </DropdownButton>
             </Form.Group>
             <div
               style={{
