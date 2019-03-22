@@ -14,13 +14,8 @@ import DashboardListReviews from "./components/dashboard/DashboardListReviews";
 import DashboardAddRestaurant from "./components/dashboard/DashboardAddRestaurant";
 import DashboardListRestaurants from "./components/dashboard/DashboardListRestaurants";
 
-const cookies = new Cookies();
-
-cookies.set("User", "Username", {
-  path: "/",
-  expires: new Date(Date.now() + 2592000)
-});
-console.log(cookies.get("User"));
+let cookie = Cookies.get("User");
+console.log(cookie);
 
 ReactDOM.render(
   <Router>
