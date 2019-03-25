@@ -6,7 +6,8 @@ import Login from "./components/login/login";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Search from "./components/search/Search";
-import RestaurantSite from "./pages/Restaurants";
+import RestaurantSite from "./components/restaurants/Restaurants";
+import Logout from "./components/logout/logout";
 import Dashboard from "./components/dashboard/Dashboard";
 
 ReactDOM.render(
@@ -15,6 +16,7 @@ ReactDOM.render(
       <Route path="/restaurants" exact component={RestaurantSite} />
       <Route path="/" exact component={App} />
       <Route path="/login" exact component={Login} />
+      <Route path="/logout" exact component={Logout} />
       <Route path="/search" exact component={Search} />
       <Route path="/dashboard" exact component={Dashboard} />
     </div>
