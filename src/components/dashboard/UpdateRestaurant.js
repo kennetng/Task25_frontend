@@ -2,7 +2,6 @@ import React from "react";
 import { Form, Button, Card } from "react-bootstrap";
 import axios from "axios";
 
-const PROXYURL = "https://cors-anywhere.herokuapp.com/";
 const API = "https://restaurant-review-react.herokuapp.com/restaurant/update";
 
 class UpdateRestaurant extends React.Component {
@@ -21,7 +20,7 @@ class UpdateRestaurant extends React.Component {
     event.preventDefault();
 
     axios
-      .post(PROXYURL + API, {
+      .post(API, {
         name: this.state.name,
         address: this.state.address,
         description: this.state.description,
@@ -61,7 +60,7 @@ class UpdateRestaurant extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(PROXYURL + API).then(json => this.setState({ store: json.data }));
+    axios.get(API).then(json => this.setState({ store: json.data }));
   }
 
   render() {

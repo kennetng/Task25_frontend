@@ -1,13 +1,11 @@
 import React, { Component } from "react";
-import NavigationBar from "../components/navbar/NavbarPage";
-import RestaurantCard from "../components/restaurants/RestaurantCard";
+import RestaurantCard from "./RestaurantCard";
 
 import axios from "axios";
 
 const APIrestaurant =
   "https://restaurant-review-react.herokuapp.com/restaurant/list";
 const APIreviews = "https://restaurant-review-react.herokuapp.com/review/list";
-const PROXYURL = "https://cors-anywhere.herokuapp.com/";
 
 class Restaurants extends Component {
   constructor(props) {
@@ -20,24 +18,17 @@ class Restaurants extends Component {
 
   componentDidMount() {
     axios
-      .get(PROXYURL + APIrestaurant)
+      .get(APIrestaurant)
       .then(json => this.setState({ restaurants: json.data }));
-
-    axios
-      .get(PROXYURL + APIreviews)
-      .then(json => this.setState({ reviews: json.data }));
   }
-
+  handleOnClick() {
+    console.log("H");
+    axios.get(APIreviews).then(json => this.setState({ reviews: json.data }));
+  }
   render() {
-    const title = "My's Restaurants!";
-
     return (
       <div>
         <div>
-          <NavigationBar />
-        </div>
-        <div>
-          <h2>{title}</h2>
           <RestaurantList
             restaurants={this.state.restaurants}
             reviews={this.state.reviews}

@@ -5,7 +5,6 @@ import axios from "axios";
 import ReviewCard from "../restaurants/ReviewCard";
 import RestaurantCard from "../restaurants/RestaurantCard";
 
-const PROXYURL = "https://cors-anywhere.herokuapp.com/";
 const API1 = "https://restaurant-review-react.herokuapp.com/review/list";
 const API2 = "https://restaurant-review-react.herokuapp.com/restaurant/list";
 
@@ -19,12 +18,8 @@ class LaunchSite extends React.Component {
   }
 
   componentDidMount() {
-    axios
-      .get(PROXYURL + API1)
-      .then(json => this.setState({ reviews: json.data }));
-    axios
-      .get(PROXYURL + API2)
-      .then(json => this.setState({ restaurants: json.data }));
+    axios.get(API1).then(json => this.setState({ reviews: json.data }));
+    axios.get(API2).then(json => this.setState({ restaurants: json.data }));
   }
 
   render() {

@@ -2,7 +2,6 @@ import React from "react";
 import { Form, Button, Card } from "react-bootstrap";
 import axios from "axios";
 
-const PROXYURL = "https://cors-anywhere.herokuapp.com/";
 const API = "https://restaurant-review-react.herokuapp.com/review/create";
 
 class DashboardAddReview extends React.Component {
@@ -20,7 +19,7 @@ class DashboardAddReview extends React.Component {
     event.preventDefault();
 
     axios
-      .post(PROXYURL + API, {
+      .post(API, {
         rating: this.state.rating,
         reviewText: this.state.reviewText,
         user_id: this.state.user_id,
@@ -55,7 +54,7 @@ class DashboardAddReview extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(PROXYURL + API).then(json => this.setState({ store: json.data }));
+    axios.get(API).then(json => this.setState({ store: json.data }));
   }
 
   render() {

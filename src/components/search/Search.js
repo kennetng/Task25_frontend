@@ -13,7 +13,6 @@ import axios from "axios";
 
 const API = "https://restaurant-review-react.herokuapp.com/restaurant/";
 const APIreviews = "https://restaurant-review-react.herokuapp.com/review/list";
-const PROXYURL = "https://cors-anywhere.herokuapp.com/";
 
 class Search extends Component {
   constructor(props) {
@@ -33,16 +32,14 @@ class Search extends Component {
   }
   handleOnClick(event) {
     axios
-      .get(PROXYURL + API + this.state.target + "/" + this.state.search)
+      .get(API + this.state.target + "/" + this.state.search)
       .then(res => {
         this.setState({ restaurants: res.data });
       })
       .catch(error => {
         console.log(error.response);
       });
-    axios
-      .get(PROXYURL + APIreviews)
-      .then(json => this.setState({ reviews: json.data }));
+    axios.get(APIreviews).then(json => this.setState({ reviews: json.data }));
 
     RestaurantList(this.state);
     this.setState({ search: "" });
@@ -109,7 +106,6 @@ class Search extends Component {
 }
 function RestaurantList(props) {
   const restaurants = props.restaurants;
-  console.log(restaurants);
   if (restaurants.length !== 0) {
     const listRestaurants = restaurants.map(res => (
       <div className="col-xs-12 col-sm-6 col-md-4">

@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import RestaurantCard from "../restaurants/RestaurantCard";
 
-const PROXYURL = "https://cors-anywhere.herokuapp.com/";
 const API = "https://restaurant-review-react.herokuapp.com/restaurant/user/";
 
 class DashboardListRestaurants extends React.Component {
@@ -16,7 +15,7 @@ class DashboardListRestaurants extends React.Component {
 
   componentDidMount() {
     axios
-      .get(PROXYURL + API + this.state.user_id)
+      .get(API + this.state.user_id)
       .then(json => this.setState({ restaurants: json.data }));
   }
 

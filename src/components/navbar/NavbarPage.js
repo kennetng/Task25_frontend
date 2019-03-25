@@ -11,10 +11,23 @@ class NavBarPage extends React.Component {
           <Nav className="ml-auto">
             <Nav.Link href="/search">Search</Nav.Link>
             <NavDropdown.Divider />
-            <Nav.Link href="/login">Login</Nav.Link>
+            <LoginSetting />
           </Nav>
         </Navbar.Collapse>
       </Navbar>
+    );
+  }
+}
+function LoginSetting() {
+  if (sessionStorage.getItem("session") === null) {
+    return <Nav.Link href="/login">Login</Nav.Link>;
+  } else {
+    return (
+      <Nav>
+        <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+        <NavDropdown.Divider />
+        <Nav.Link href="/logout">Log out</Nav.Link>
+      </Nav>
     );
   }
 }

@@ -13,7 +13,6 @@ import Cookies from "universal-cookie";
 const cookies = new Cookies();
 
 const API = "https://restaurant-review-react.herokuapp.com/user/create";
-const PROXYURL = "https://cors-anywhere.herokuapp.com/";
 
 class RegisterForm extends Component {
   constructor(props) {
@@ -28,10 +27,8 @@ class RegisterForm extends Component {
   }
 
   handleRegisterForm(event) {
-    event.preventDefault();
-
     axios
-      .post(PROXYURL + API, {
+      .post(API, {
         username: this.state.username,
         password: this.state.password,
         email: this.state.email,
