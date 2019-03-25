@@ -8,16 +8,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Search from "./components/search/Search";
 import RestaurantSite from "./components/restaurants/Restaurants";
 import Logout from "./components/logout/logout";
-import Cookies from "universal-cookie";
 import Dashboard from "./components/dashboard/Dashboard";
-
-const cookies = new Cookies();
-
-cookies.set("User", "Username", {
-  path: "/",
-  expires: new Date(Date.now() + 2592000)
-});
-console.log(cookies.get("User"));
 
 ReactDOM.render(
   <Router>
