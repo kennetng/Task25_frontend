@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Button, Card, Badge } from "react-bootstrap";
+import { Form, Button, Card } from "react-bootstrap";
 import axios from "axios";
 import PropTypes from "prop-types";
 
@@ -83,13 +83,6 @@ class LoginForm extends Component {
                 </Button>
               </div>
             </Form>
-            <br />
-            <p>
-              Status:
-              <Badge pill variant="danger">
-                Not logged in(Not working atm)
-              </Badge>
-            </p>
           </Card.Body>
         </Card>
       </div>
